@@ -1,12 +1,22 @@
 import express from "express"
 import cors from "cors"
 import dotenv from "dotenv"
+import authRoutes from "./routes/authRoutes.js"
+import accountRoutes from "./routes/accountRoutes.js"
+import dbConnectionCheck from "./utils/dbHealthcheck.js"
 dotenv.config()
 const app=express()
 app.use(cors)
 app.use(express.json())
+app.use("/api/auth",authRoutes)
+app.use("/api/account",accountRoutes)
 
-app.listen(6000,()=>{
-    console.log(`server running on port 6000`);
-    
+app.listen(6001,async()=>{
+    try {
+        await dbConnectionCheck()
+        console.log(`server is running on port `)
+    } catch (error) {
+        console.log("error occured while starting our server");
+        
+    }
 })

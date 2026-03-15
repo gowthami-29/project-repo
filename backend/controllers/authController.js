@@ -5,19 +5,19 @@ export const signup=async(req,res)=>{
     const {name,email,password}=req.body
     const hashed=await bcrypt.hash(password,10)
     const {data,error}=await supabase
-    .from("userrs")
+    .from("userrrs")
     .insert([{name,email,password:hashed,balance:10000}])
     .select()
     if(error){
         return res.status(400).json(error)
     }
-    res.json({token,user:data[0]})
+    res.json(data)
 }
 
 export const login=async(req,res)=>{
     const {email,password}=req.body
     const {data}=await supabase
-    .from("userrs")
+    .from("userrrs")
     .select("*")
     .eq("email",email)
     .single()
