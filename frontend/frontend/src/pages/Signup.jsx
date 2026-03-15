@@ -8,10 +8,9 @@ function Signup(){
     const [password,setpassword]=useState("")
     const navigate=useNavigate()
     const signup=async()=>{
-        const res=await axios.post("http://localhost:6001/api/auth/signup",{
-            name,email,password
-
-        })
+        const res=await axios.post("http://localhost:6001/api/auth/signup",
+            {
+            name,email,password});
         localStorage.setItem("token",res.data.token)
         navigate("/dashboard")
     };

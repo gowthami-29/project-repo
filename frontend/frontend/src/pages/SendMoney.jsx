@@ -1,6 +1,6 @@
 import {  useState } from "react";
 import axios from "axios"
-function sendMoney(){
+function SendMoney(){
     const [receiverEmail,setReceiverEmail]=useState("");
     const [amount,setAmount]=useState("")
     const token=localStorage.getItem("token")
@@ -21,4 +21,4 @@ function sendMoney(){
         </div>
     )
 }
-export default sendMoney;
+export default SendMoney;
