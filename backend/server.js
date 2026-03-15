@@ -10,11 +10,11 @@ app.use(cors)
 app.use(express.json())
 app.use("/api/auth",authRoutes)
 app.use("/api/account",accountRoutes)
-
-app.listen(6001,async()=>{
+const PORT=6001
+app.listen(PORT,async()=>{
     try {
         await dbConnectionCheck()
-        console.log(`server is running on port `)
+        console.log(`server is running on port ${PORT} `)
     } catch (error) {
         console.log("error occured while starting our server");
         
